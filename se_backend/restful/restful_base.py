@@ -62,13 +62,13 @@ class restful_base(object):
 
 
 if __name__ == "__main__":
-    user = 'rwang3'
-    pwd = 'Wr@nsfz1983'
-    base_url = 'https://fishbulb-dev.sg05.orchard.apple.com'
+    user = ''
+    pwd = ''
+    base_url = ''
     sess = restful_base(base_url, user, pwd)
 
-    url_args = 'api/v1/shift'
-    #r_code, r_content, r_headers = sess.get(url_args, Accept='application/json')
+    url_args = ''
+    #r_code, r_content, r_headers = sess.get(url_args, content_type='application/json')
     r_code, r_content, r_headers = sess.get(url_args)
     print(r_code)
     print(r_content)
