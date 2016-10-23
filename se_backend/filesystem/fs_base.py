@@ -28,19 +28,19 @@ class fs_base(object):
         return file_list[0]
     
     
-    def find_sonic_container(self, path):
-        sonic_repo = None
+    def find_data_container(self, path, key):
+        data_repo = None
         for repo in os.listdir(path):
             metafile = "%s/%s/.com.apple.mobile_container_manager.metadata.plist" % (path, repo)
             if os.path.exists(metafile):
                 with open(metafile, 'r') as fp:
-                    if "titan.Sonic" in fp.read():
-                        sonic_repo = "%s/%s" % (path, repo)
+                    if key in fp.read():
+                        data_repo = "%s/%s" % (path, repo)
                         break
-        return sonic_repo
+        return data_repo
     
     
-    def cap_latest_tagging_file(self, sonic_repo):
-        tagging_file_list = os.listdir("%s/Documents" % sonic_repo)
+    def cap_latest_tagging_file(self, data_repo):
+        tagging_file_list = os.listdir("%s/Documents" % data_repo)
         tagging_file_list.sort(reverse=True)
-        return "%s/Documents/%s" % (sonic_repo, tagging_file_list[0])
+        return "%s/Documents/%s" % (data_repo, tagging_file_list[0])
